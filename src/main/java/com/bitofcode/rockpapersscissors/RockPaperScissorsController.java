@@ -23,7 +23,7 @@ public class RockPaperScissorsController {
 
 	@RequestMapping(path = { "/play" }, method = { RequestMethod.POST, RequestMethod.PUT })
 	public GameResult play(@RequestBody ShapeType shape) {
-		return new GameResult(game.doIWin(shape));
+		return new GameResult(game.play(shape));
 	}
 
 }

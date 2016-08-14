@@ -27,7 +27,7 @@ public class Game {
 		FIRST_WIN, SECOND_WIN, NO_WINNER
 	}
 
-	public WinnerType doIWin(ShapeType shape) {
+	public WinnerType play(ShapeType shape) {
 		if (shape == null)
 			throw new ArgumentInvalidException();
 		return play(shape, generateRandomShape());

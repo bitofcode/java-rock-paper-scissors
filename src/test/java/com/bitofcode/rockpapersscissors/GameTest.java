@@ -31,18 +31,18 @@ public class GameTest {
 
 	@Test(expected = Game.ArgumentInvalidException.class)
 	public void given_null_then_throw_ArgumentInvalidException() throws Exception {
-		game.doIWin(null);
+		game.play(null);
 	}
 
 	@Test
 	public void given_shape_against_random_should_win() throws Exception {
-		WinnerType didIWin = gameToTestDidIWin.doIWin(ShapeType.SCISSOR);
+		WinnerType didIWin = gameToTestDidIWin.play(ShapeType.SCISSOR);
 		assertThat(didIWin, is(WinnerType.FIRST_WIN));
 	}
 
 	@Test
 	public void given_shape_against_random_should_loose() throws Exception {
-		WinnerType didIWin = gameToTestDidIWin.doIWin(ShapeType.ROCK);
+		WinnerType didIWin = gameToTestDidIWin.play(ShapeType.ROCK);
 		assertThat(didIWin, is(WinnerType.SECOND_WIN));
 	}
 
