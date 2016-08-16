@@ -1,6 +1,6 @@
-package com.bitofcode.rockpapersscissors;
+package com.bitofcode.rockpapersscissors.web;
 
-import com.bitofcode.rockpapersscissors.Game.WinnerType;
+import com.bitofcode.rockpapersscissors.game.WinnerType;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

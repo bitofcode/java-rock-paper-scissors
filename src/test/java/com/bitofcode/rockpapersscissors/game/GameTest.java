@@ -1,4 +1,4 @@
-package com.bitofcode.rockpapersscissors;
+package com.bitofcode.rockpapersscissors.game;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertNotNull;
@@ -10,8 +10,11 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.bitofcode.rockpapersscissors.Game.ShapeType;
-import com.bitofcode.rockpapersscissors.Game.WinnerType;
+import com.bitofcode.rockpapersscissors.game.ShapeInvalidException;
+import com.bitofcode.rockpapersscissors.game.Game;
+import com.bitofcode.rockpapersscissors.game.GameImpl;
+import com.bitofcode.rockpapersscissors.game.ShapeType;
+import com.bitofcode.rockpapersscissors.game.WinnerType;
 
 public class GameTest {
 
@@ -20,16 +23,20 @@ public class GameTest {
 
 	@Before
 	public void canCreateGame() {
-		game = new Game();
-		gameToTestDidIWin = new Game() {
-			@Override
+		game = new GameImpl();
+
+		gameToTestDidIWin = generateGameWithPaperAsRandomShape();
+	}
+
+	private GameImpl generateGameWithPaperAsRandomShape() {
+		return new GameImpl() {
 			public ShapeType generateRandomShape() {
 				return ShapeType.PAPER;
 			}
 		};
 	}
 
-	@Test(expected = Game.ArgumentInvalidException.class)
+	@Test(expected = ShapeInvalidException.class)
 	public void given_null_then_throw_ArgumentInvalidException() throws Exception {
 		game.play(null);
 	}
@@ -46,12 +53,12 @@ public class GameTest {
 		assertThat(didIWin, is(WinnerType.SECOND_WIN));
 	}
 
-	@Test(expected = Game.ArgumentInvalidException.class)
+	@Test(expected = ShapeInvalidException.class)
 	public void given_null_for_firstPlayer_then_throw_ArgumentInvalidException() throws Exception {
 		game.play(null, ShapeType.PAPER);
 	}
 
-	@Test(expected = Game.ArgumentInvalidException.class)
+	@Test(expected = ShapeInvalidException.class)
 	public void given_null_for_secondPlayer_then_throw_ArgumentInvalidException() throws Exception {
 		game.play(ShapeType.PAPER, null);
 	}
@@ -62,49 +69,49 @@ public class GameTest {
 	}
 
 	private void playAndAssert(ShapeType first, ShapeType second, WinnerType expectedWinner) {
-		Game.WinnerType winner = game.play(first, second);
+		WinnerType winner = game.play(first, second);
 
 		assertThat(winner, is(expectedWinner));
 	}
 
 	@Test
 	public void given_both_paper_no_one_wins() throws Exception {
-		playAndAssert(Game.ShapeType.PAPER, Game.ShapeType.PAPER, Game.WinnerType.NO_WINNER);
+		playAndAssert(ShapeType.PAPER, ShapeType.PAPER, WinnerType.NO_WINNER);
 	}
 
 	@Test
 	public void given_both_scissors_no_one_wins() throws Exception {
-		playAndAssert(Game.ShapeType.SCISSOR, Game.ShapeType.SCISSOR, WinnerType.NO_WINNER);
+		playAndAssert(ShapeType.SCISSOR, ShapeType.SCISSOR, WinnerType.NO_WINNER);
 	}
 
 	@Test
 	public void first_scissor_second_papaer_first_wins() throws Exception {
-		playAndAssert(Game.ShapeType.SCISSOR, Game.ShapeType.PAPER, Game.WinnerType.FIRST_WIN);
+		playAndAssert(ShapeType.SCISSOR, ShapeType.PAPER, WinnerType.FIRST_WIN);
 	}
 
 	@Test
 	public void first_paper_second_scissor_second_wins() throws Exception {
-		playAndAssert(Game.ShapeType.PAPER, Game.ShapeType.SCISSOR, Game.WinnerType.SECOND_WIN);
+		playAndAssert(ShapeType.PAPER, ShapeType.SCISSOR, WinnerType.SECOND_WIN);
 	}
 
 	@Test
 	public void first_paper_second_rock_first_wins() throws Exception {
-		playAndAssert(Game.ShapeType.PAPER, Game.ShapeType.ROCK, Game.WinnerType.FIRST_WIN);
+		playAndAssert(ShapeType.PAPER, ShapeType.ROCK, WinnerType.FIRST_WIN);
 	}
 
 	@Test
 	public void first_rock_second_paper_second_wins() throws Exception {
-		playAndAssert(Game.ShapeType.ROCK, Game.ShapeType.PAPER, Game.WinnerType.SECOND_WIN);
+		playAndAssert(ShapeType.ROCK, ShapeType.PAPER, WinnerType.SECOND_WIN);
 	}
 
 	@Test
 	public void first_rock_second_scissor_first_wins() throws Exception {
-		playAndAssert(Game.ShapeType.ROCK, Game.ShapeType.SCISSOR, Game.WinnerType.FIRST_WIN);
+		playAndAssert(ShapeType.ROCK, ShapeType.SCISSOR, WinnerType.FIRST_WIN);
 	}
 
 	@Test
 	public void first_scissor_second_rock_second_wins() throws Exception {
-		playAndAssert(Game.ShapeType.SCISSOR, Game.ShapeType.ROCK, Game.WinnerType.SECOND_WIN);
+		playAndAssert(ShapeType.SCISSOR, ShapeType.ROCK, WinnerType.SECOND_WIN);
 	}
 
 	@Test

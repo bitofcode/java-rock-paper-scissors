@@ -1,4 +1,4 @@
-package com.bitofcode.rockpapersscissors;
+package com.bitofcode.rockpapersscissors.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bitofcode.rockpapersscissors.Game.ShapeType;
+import com.bitofcode.rockpapersscissors.game.Game;
+import com.bitofcode.rockpapersscissors.game.ShapeType;
 
 @RestController
 @RequestMapping(path = { "/api/rock-paper-scissors" }, consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {
