@@ -10,4 +10,8 @@ public class ShapeInvalidException extends RuntimeException {
 	public ShapeInvalidException(String message) {
 		super(message);
 	}
+
+	public static ShapeInvalidException createShapeInvalidException(String message) {
+		return new ShapeInvalidException(message + " Shape should be one of {ROCK, PAPER, SCISSOR}");
+	}
 }

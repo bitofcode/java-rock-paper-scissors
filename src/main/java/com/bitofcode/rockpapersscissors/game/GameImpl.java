@@ -17,24 +17,24 @@ public class GameImpl implements Game {
 
 	private void checkTheShape(ShapeType shape) {
 		if (shape == null)
-			throw new ShapeInvalidException("Shape is null");
+			throw ShapeInvalidException.createShapeInvalidException("Shape is null.");
 	}
 
-	private boolean isTheFirstShapeTheWinner(ShapeType firstShape, ShapeType secondShape) {
-		return (firstShape.equals(ShapeType.PAPER) && secondShape.equals(ShapeType.ROCK))
-				|| (firstShape.equals(ShapeType.SCISSOR) && secondShape.equals(ShapeType.PAPER))
-				|| (firstShape.equals(ShapeType.ROCK) && secondShape.equals(ShapeType.SCISSOR));
+	private boolean amITheWinner(ShapeType myGussedShape, ShapeType otherGussedShape) {
+		return (myGussedShape.equals(ShapeType.PAPER) && otherGussedShape.equals(ShapeType.ROCK))
+				|| (myGussedShape.equals(ShapeType.SCISSOR) && otherGussedShape.equals(ShapeType.PAPER))
+				|| (myGussedShape.equals(ShapeType.ROCK) && otherGussedShape.equals(ShapeType.SCISSOR));
 	}
 
-	private boolean isNoWinner(ShapeType firstShape, ShapeType secondShape) {
-		return firstShape.equals(secondShape);
+	private boolean isNoWinner(ShapeType myGussedShape, ShapeType otherGuessedShape) {
+		return myGussedShape.equals(otherGuessedShape);
 	}
 
-	private WinnerType getTheWinnerOf(ShapeType firstShape, ShapeType secondShape) {
-		if (isNoWinner(firstShape, secondShape))
+	private WinnerType getTheWinnerOf(ShapeType myGuessedShape, ShapeType otherGuessedShape) {
+		if (isNoWinner(myGuessedShape, otherGuessedShape))
 			return WinnerType.NO_WINNER;
 
-		return isTheFirstShapeTheWinner(firstShape, secondShape) ? WinnerType.FIRST_WIN : WinnerType.SECOND_WIN;
+		return amITheWinner(myGuessedShape, otherGuessedShape) ? WinnerType.I_WIN : WinnerType.THE_OTHER_WINS;
 	}
 
 	public ShapeType generateRandomShape() {
@@ -46,8 +46,8 @@ public class GameImpl implements Game {
 		return getTheWinnerOf(shape, generateRandomShape());
 	}
 
-	public WinnerType play(ShapeType firstShape, ShapeType secondShape) {
-		checkInputShapes(firstShape, secondShape);
-		return getTheWinnerOf(firstShape, secondShape);
+	public WinnerType play(ShapeType myGuessedShape, ShapeType otherGuessedShape) {
+		checkInputShapes(myGuessedShape, otherGuessedShape);
+		return getTheWinnerOf(myGuessedShape, otherGuessedShape);
 	}
 }

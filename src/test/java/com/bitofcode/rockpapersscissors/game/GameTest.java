@@ -44,13 +44,13 @@ public class GameTest {
 	@Test
 	public void given_shape_against_random_should_win() throws Exception {
 		WinnerType didIWin = gameToTestDidIWin.play(ShapeType.SCISSOR);
-		assertThat(didIWin, is(WinnerType.FIRST_WIN));
+		assertThat(didIWin, is(WinnerType.I_WIN));
 	}
 
 	@Test
 	public void given_shape_against_random_should_loose() throws Exception {
 		WinnerType didIWin = gameToTestDidIWin.play(ShapeType.ROCK);
-		assertThat(didIWin, is(WinnerType.SECOND_WIN));
+		assertThat(didIWin, is(WinnerType.THE_OTHER_WINS));
 	}
 
 	@Test(expected = ShapeInvalidException.class)
@@ -86,32 +86,32 @@ public class GameTest {
 
 	@Test
 	public void first_scissor_second_papaer_first_wins() throws Exception {
-		playAndAssert(ShapeType.SCISSOR, ShapeType.PAPER, WinnerType.FIRST_WIN);
+		playAndAssert(ShapeType.SCISSOR, ShapeType.PAPER, WinnerType.I_WIN);
 	}
 
 	@Test
 	public void first_paper_second_scissor_second_wins() throws Exception {
-		playAndAssert(ShapeType.PAPER, ShapeType.SCISSOR, WinnerType.SECOND_WIN);
+		playAndAssert(ShapeType.PAPER, ShapeType.SCISSOR, WinnerType.THE_OTHER_WINS);
 	}
 
 	@Test
 	public void first_paper_second_rock_first_wins() throws Exception {
-		playAndAssert(ShapeType.PAPER, ShapeType.ROCK, WinnerType.FIRST_WIN);
+		playAndAssert(ShapeType.PAPER, ShapeType.ROCK, WinnerType.I_WIN);
 	}
 
 	@Test
 	public void first_rock_second_paper_second_wins() throws Exception {
-		playAndAssert(ShapeType.ROCK, ShapeType.PAPER, WinnerType.SECOND_WIN);
+		playAndAssert(ShapeType.ROCK, ShapeType.PAPER, WinnerType.THE_OTHER_WINS);
 	}
 
 	@Test
 	public void first_rock_second_scissor_first_wins() throws Exception {
-		playAndAssert(ShapeType.ROCK, ShapeType.SCISSOR, WinnerType.FIRST_WIN);
+		playAndAssert(ShapeType.ROCK, ShapeType.SCISSOR, WinnerType.I_WIN);
 	}
 
 	@Test
 	public void first_scissor_second_rock_second_wins() throws Exception {
-		playAndAssert(ShapeType.SCISSOR, ShapeType.ROCK, WinnerType.SECOND_WIN);
+		playAndAssert(ShapeType.SCISSOR, ShapeType.ROCK, WinnerType.THE_OTHER_WINS);
 	}
 
 	@Test

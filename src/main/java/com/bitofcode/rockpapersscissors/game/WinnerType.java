@@ -1,5 +1,5 @@
 package com.bitofcode.rockpapersscissors.game;
 
 public enum WinnerType {
-	FIRST_WIN, SECOND_WIN, NO_WINNER
+	I_WIN, THE_OTHER_WINS, NO_WINNER
 }
