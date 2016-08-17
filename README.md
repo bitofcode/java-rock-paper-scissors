@@ -14,7 +14,7 @@
 * Body der HTTP-Anfrage ist in JSON-Format {"guess": "SCISSOR"} oder {"guess": "ROCK"} oder {"guess": "PAPER"}
 * Body der Antwort is {"result":"I_WIN"} => Du hast gewonnen.
 * Body der Antwort is {"result":"THE\_OTHER_WINS"} => Computer hat gewonnen.
-* Body der Antwort is {"result":"NO_WINNER"} => Computer hat gewonnen.
+* Body der Antwort is {"result":"NO_WINNER"} => Keiner gewinnt.
 	
 
 ## Schere, Stein, Papier
@@ -22,23 +22,23 @@
 
 Die Aufgabe ist Schere, Stein, Papier mit Hilfe der Programmiersprache Java und dem Spring Framework sowie Spring Boot
 zu implementieren. Gespielt werden soll mittels REST-Aufrufen gegen den Computer. Die Request- und Response-Bodies
-sollen mittels JSON ¸bergeben bzw. entgegengenommen werden.
-Entwickle so gewissenhaft, wie du auch Software im Alltag entwickeln w¸rdest.
+sollen mittels JSON √ºbergeben bzw. entgegengenommen werden.
+Entwickle so gewissenhaft, wie du auch Software im Alltag entwickeln w√ºrdest.
 Regeln
 
-Zwei Personen (in diesem Fall ein Mensch und der Computer) w‰hlen gleichzeitig aus der Menge A einen Gegenstand aus.
+Zwei Personen (in diesem Fall ein Mensch und der Computer) w√§hlen gleichzeitig aus der Menge A einen Gegenstand aus.
 A = {Schere, Stein, Papier}
 
 ## Gewertet wird nach den normalen Regeln:
 * Ziehen beide den gleichen Gegenstand, so gilt dies als unentschieden
 * Schere schneidet Papier => Schere gewinnt
 * Papier wickelt Stein ein => Papier gewinnt
-* Stein ist h‰rter als Schere => Stein gewinnt
+* Stein ist h√§rter als Schere => Stein gewinnt
 
 ## Nicht-funktionale Anforderungen
 1. Die zu verwendende Programmiersprache ist Java in der letzten Major-Version.
-2. Die Anwendung l‰sst sich via Apache Maven oder Gradle ohne spezielle Anpassungen erstellen.
-3. Die Anwendung ist Self-Contained und l‰sst sich direkt starten mit: java -jar <application.jar>
+2. Die Anwendung l√§sst sich via Apache Maven oder Gradle ohne spezielle Anpassungen erstellen.
+3. Die Anwendung ist Self-Contained und l√§sst sich direkt starten mit: java -jar <application.jar>
 4. Stelle sicher, dass das Spiel funktioniert
 
 ## Hilfestellungen
