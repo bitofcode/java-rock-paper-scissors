@@ -1,0 +1,5 @@
+ports:
+- port: 8080
+- port: 9890
+tasks:
+- command: chmod +x gradlew && ./gradlew clean build
