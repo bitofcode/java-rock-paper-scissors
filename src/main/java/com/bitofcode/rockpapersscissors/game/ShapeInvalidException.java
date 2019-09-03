@@ -4,10 +4,7 @@ public class ShapeInvalidException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public ShapeInvalidException() {
-	}
-
-	public ShapeInvalidException(String message) {
+	private ShapeInvalidException(String message) {
 		super(message);
 	}
 
